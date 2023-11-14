@@ -8,7 +8,7 @@ export function Header() {
         <span className="text-xl font-light">Sistemas</span>
       </div>
 
-      <button className="absolute right-20 top-7 w-[90px] h-11 bg-white rounded-lg text-black flex justify-center items-center gap-4">
+      <button className="absolute right-20 top-7 w-[90px] h-11 bg-white hover:bg-white/90 transition-all duration-300 rounded-lg text-black flex justify-center items-center gap-4">
         <IconClient icon="mdi:cart" />
         <span className="text-[18px] font-bold">0</span>
       </button>
