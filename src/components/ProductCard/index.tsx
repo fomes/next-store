@@ -1,13 +1,16 @@
 import Image from "next/image";
 import { IconClient } from "../IconClient";
 
-interface ProductCardProps {
+export interface ProductCardProps {
+  id?: number;
   photo: string;
   name: string;
   price: string;
 }
 
-export function ProductCard({ photo, name, price }: ProductCardProps) {
+export function ProductCard({ id, photo, name, price }: ProductCardProps) {
+  const handleUpdateCart = () => {};
+
   return (
     <div className="bg-[#fff] rounded-lg w-56 h-72 relative">
       <div className="m-3">
@@ -30,7 +33,10 @@ export function ProductCard({ photo, name, price }: ProductCardProps) {
         </div>
       </div>
 
-      <button className="bg-[#0F52BA]/90 hover:bg-[#0F52BA]/80 transition-all duration-300 text-white w-full absolute bottom-0 rounded-b-lg h-8 flex justify-center items-center gap-3">
+      <button
+        onClick={handleUpdateCart}
+        className="bg-[#0F52BA]/90 hover:bg-[#0F52BA]/80 transition-all duration-300 text-white w-full absolute bottom-0 rounded-b-lg h-8 flex justify-center items-center gap-3"
+      >
         <IconClient icon="eva:shopping-bag-outline" />
         <span className="text-sm font-semibold uppercase">comprar</span>
       </button>

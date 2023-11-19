@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
 import "./globals.css";
-import ProductsProvider from "@/context/productsContext";
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -22,14 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ProductsProvider>
-      <html lang="en">
-        <body className={montserrat.className}>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </html>
-    </ProductsProvider>
+    <html lang="en">
+      <body className={montserrat.className}>
+        <Header cart={[]} />
+        {children}
+        <Footer />
+      </body>
+    </html>
   );
 }
