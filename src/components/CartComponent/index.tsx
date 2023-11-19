@@ -22,7 +22,7 @@ export function CartComponent({
   return (
     <div
       className={`${
-        show ? "visible translate-x-0" : "hidden translate-x-full"
+        show ? "translate-x-0" : "translate-x-full"
       } h-screen w-[30rem] bg-[#0F52BA] absolute z-10 top-0 right-0 py-9 pl-11 pr-[3.75rem] transition-all duration-500`}
     >
       <div>
