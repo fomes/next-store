@@ -3,6 +3,8 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { ProductCartItem } from "../ProductCartItem";
 import { Product } from "@/types/product";
+import { useSelector } from "react-redux";
+import { selectTotalPrice } from "@/redux/cart/cartSelectors";
 
 interface CartComponentProps {
   show?: boolean;
@@ -15,11 +17,13 @@ export function CartComponent({
   cart,
   handleCloseCart,
 }: CartComponentProps) {
+  const totalPrice = useSelector(selectTotalPrice);
+
   return (
     <div
       className={`${
-        !show && "hidden"
-      } h-screen w-[30rem] bg-[#0F52BA] absolute z-10 top-0 right-0 py-9 pl-11 pr-[3.75rem]`}
+        show ? "visible translate-x-0" : "hidden translate-x-full"
+      } h-screen w-[30rem] bg-[#0F52BA] absolute z-10 top-0 right-0 py-9 pl-11 pr-[3.75rem] transition-all duration-500`}
     >
       <div>
         <h1 className="text-white text-3xl font-bold mb-[4.38rem]">
@@ -34,7 +38,7 @@ export function CartComponent({
       </div>
 
       <div className="flex flex-col gap-[1.38rem]">
-        {cart.map((item: any) => {
+        {cart.map((item: Product) => {
           return (
             <ProductCartItem
               id={item.id}
@@ -42,6 +46,7 @@ export function CartComponent({
               name={item.name}
               photo={item.photo}
               price={item.price}
+              quantity={item.quantity}
             />
           );
         })}
@@ -49,7 +54,7 @@ export function CartComponent({
 
       <div className="absolute bottom-[8.69rem] w-96">
         <div className="text-3xl font-bold text-white flex justify-between">
-          <h1>Total:</h1> <h1>R$ {0}</h1>
+          <h1>Total:</h1> <h1>R$ {totalPrice}</h1>
         </div>
       </div>
 

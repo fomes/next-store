@@ -2,10 +2,11 @@
 
 import { IconClient } from "../IconClient";
 import { CartComponent } from "../CartComponent";
-import { Product } from "@/types/product";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectProductsCount } from "@/redux/cart/cartSelectors";
 
-export function Header(cart: Product[]) {
+export function Header() {
   const [showCart, setShowCart] = useState(false);
 
   const handleShowCart = () => {
@@ -15,6 +16,10 @@ export function Header(cart: Product[]) {
   const handleCloseCart = () => {
     setShowCart(false);
   };
+
+  const { products } = useSelector((rootReducer: any) => rootReducer.cartSlice);
+
+  const productsCount = useSelector(selectProductsCount);
 
   return (
     <>
@@ -29,13 +34,13 @@ export function Header(cart: Product[]) {
           className="absolute right-20 top-7 w-[90px] h-11 bg-white hover:bg-white/90 transition-all duration-300 rounded-lg text-black flex justify-center items-center gap-4"
         >
           <IconClient icon="mdi:cart" />
-          <span className="text-[18px] font-bold">{cart.length}</span>
+          <span className="text-[18px] font-bold">{productsCount}</span>
         </button>
       </div>
       <CartComponent
         show={showCart}
         handleCloseCart={handleCloseCart}
-        cart={[]}
+        cart={products}
       />
     </>
   );
