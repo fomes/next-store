@@ -21,7 +21,7 @@ const cartSlice = createSlice({
       if (productInCart) {
         state.products = state.products.map((product: Product) =>
           product.id === action.payload.id
-            ? { ...product, quantity: product.quantity + 1 }
+            ? { ...product, quantity: product.quantity! + 1 }
             : product
         );
 
@@ -37,7 +37,7 @@ const cartSlice = createSlice({
     ) => {
       state.products = state.products.map((product: Product) =>
         product.id === action.payload
-          ? { ...product, quantity: product.quantity + 1 }
+          ? { ...product, quantity: product.quantity! + 1 }
           : product
       );
     },
@@ -49,10 +49,10 @@ const cartSlice = createSlice({
       state.products = state.products
         .map((product) =>
           product.id === action.payload
-            ? { ...product, quantity: product.quantity - 1 }
+            ? { ...product, quantity: product.quantity! - 1 }
             : product
         )
-        .filter((product) => product.quantity > 0);
+        .filter((product) => product.quantity! > 0);
     },
 
     removeProduct: (state: CartStateProps, action: PayloadAction<Number>) => {
