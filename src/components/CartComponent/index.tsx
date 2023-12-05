@@ -23,7 +23,7 @@ export function CartComponent({
     <div
       className={`${
         show ? "translate-x-0" : "translate-x-full"
-      } h-screen w-[30rem] bg-[#0F52BA] absolute z-10 top-0 right-0 py-9 pl-11 pr-[3.75rem] transition-all duration-500`}
+      } h-screen w-[30rem] bg-[#0F52BA] fixed z-10 top-0 right-0 py-9 pl-11 pr-[3.75rem] transition-all duration-500`}
     >
       <div>
         <h1 className="text-white text-3xl font-bold mb-[4.38rem]">
